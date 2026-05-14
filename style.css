@@ -1,0 +1,55 @@
+#quran-translate-popup {
+    position: absolute;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    padding: 28px 12px 12px 12px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    max-width: 380px;
+    min-width: 200px;
+    max-height: 70vh;
+    overflow-y: auto;
+    z-index: 999999;
+    direction: rtl;
+    font-family: Arial, sans-serif;
+}
+
+#quran-translate-close {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #999;
+    line-height: 1;
+    direction: ltr;
+}
+
+#quran-translate-close:hover { color: #333; }
+
+/* Section label (e.g. "Word Translation" or "Al-Baqarah 2:255") */
+.tr-label {
+    font-size: 11px;
+    color: #999;
+    direction: ltr;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    margin-bottom: 4px;
+    letter-spacing: 0.3px;
+}
+
+/* The actual translated text */
+.tr-text {
+    font-size: 18px;
+    line-height: 1.9;
+    direction: rtl;
+    font-family: "Noto Nastaliq Urdu", "Jameel Noori Nastaleeq", serif;
+    word-wrap: break-word;
+}
+
+/* Separator between word and Quranic sections */
+.tr-divider {
+    height: 1px;
+    background: #ebebeb;
+    margin: 10px 0;
+}

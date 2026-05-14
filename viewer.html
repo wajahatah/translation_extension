@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Viewer</title>
+    <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+    <div id="toolbar">
+        <div id="toolbar-left">
+            <button id="zoom-out">&#8722;</button>
+            <span id="zoom-level">150%</span>
+            <button id="zoom-in">&#43;</button>
+            <button id="ocr-btn" title="اسکین شدہ PDF کے لیے: بٹن دبائیں پھر متن پر گھسیٹیں">OCR</button>
+        </div>
+        <div id="page-info">صفحہ لوڈ ہو رہا ہے…</div>
+    </div>
+
+    <div id="error-banner" style="display:none">
+        <strong>فائل نہیں کھلی۔</strong>
+        Chrome میں extension کی settings کھولیں ← Details ← <em>Allow access to file URLs</em> کو فعال کریں، پھر صفحہ دوبارہ کھولیں۔
+    </div>
+
+    <div id="viewer-container">
+        <div id="viewer"></div>
+    </div>
+
+    <script src="pdf.min.js"></script>
+    <script src="viewer.js"></script>
+</body>
+</html>
