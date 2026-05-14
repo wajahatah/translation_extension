@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial; padding: 10px; width: 240px; font-size: 13px; }
+    h3   { margin: 0 0 10px; }
+    label { display: block; color: #555; margin-top: 10px; }
+    select, input { width: 100%; padding: 5px; margin-top: 4px; box-sizing: border-box; }
+    input { font-size: 12px; }
+    .hint { color: #888; font-size: 11px; margin-top: 4px; }
+    a     { color: #1a73e8; }
+  </style>
+</head>
+<body>
+  <h3>Quran Translator</h3>
+
+  <label>Translator:</label>
+  <select id="translator">
+    <option value="ur.jalandhry">اردو — جالندھری</option>
+    <option value="ur.junagarhi">اردو — جونا گڈھی</option>
+    <option value="ur.maududi">اردو — مودودی</option>
+    <option value="en.sahih">English — Sahih Intl.</option>
+    <option value="en.asad">English — Asad</option>
+  </select>
+
+  <label>OCR.space API Key:</label>
+  <input id="ocrKey" type="text" placeholder="Paste your free key here" />
+  <div class="hint">
+    Get a free key (25k/month) at
+    <a href="https://ocr.space/ocrapi" target="_blank">ocr.space/ocrapi</a>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
