@@ -21,14 +21,33 @@ function getTranslator() {
 
 // ── translation ───────────────────────────────────────────────────────────────
 
+function stripDiacritics(text) {
+    return text.replace(/[ً-ٟؐ-ؚۖ-ۜ۟-۪ۤۧۨ-ۭ]/g, '');
+}
+
 async function fetchQuranTranslation(text, translator) {
+    const cleanText = stripDiacritics(text.trim());
+    const words     = cleanText.split(/\s+/).filter(w => w.length > 1);
+
+    // For multi-word selections, searching with fewer words yields better API results
+    const searchQuery = words.length > 2 ? words.slice(0, 2).join(' ') : cleanText;
+
     const searchRes  = await fetch(
-        `https://api.alquran.cloud/v1/search/${encodeURIComponent(text)}/all/ar`
+        `https://api.alquran.cloud/v1/search/${encodeURIComponent(searchQuery)}/all/ar`
     );
     const searchData = await searchRes.json();
     if (searchData?.status !== 'OK' || !searchData?.data?.matches?.length) return null;
 
-    const match    = searchData.data.matches[0];
+    let match = searchData.data.matches[0];
+
+    // For multi-word selections, prefer the ayah that contains all the searched words
+    if (words.length > 1) {
+        const better = searchData.data.matches.find(m =>
+            words.every(w => stripDiacritics(m.text || '').includes(w))
+        );
+        if (better) match = better;
+    }
+
     const surahNum = match?.surah?.number;
     const ayahNum  = match?.numberInSurah;
     const surahEn  = match?.surah?.englishName || '';
